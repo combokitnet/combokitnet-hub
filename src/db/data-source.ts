@@ -1,4 +1,8 @@
 import "reflect-metadata";
+// Load .env.local for migration scripts (not needed in Next.js runtime)
+if (process.env.NODE_ENV !== 'production' && !process.env.NEXT_RUNTIME) {
+    require('dotenv').config({ path: '.env.local' });
+}
 import { DataSource } from "typeorm";
 import { User } from "../entities/User";
 import { Toolkit } from "../entities/Toolkit";
@@ -11,10 +15,11 @@ export const AppDataSource = new DataSource({
     username: process.env.DB_USERNAME || "postgres",
     password: process.env.DB_PASSWORD || "postgres",
     database: process.env.DB_DATABASE || "combokitnet",
+    entityPrefix: "v3_",
     synchronize: true,
     logging: false,
     entities: [User, Toolkit, Collection],
-    migrations: [],
+    migrations: ["src/db/migrations/**/*.ts"],
     subscribers: [],
 });
 
