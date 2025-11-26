@@ -9,15 +9,7 @@ export async function GET(
     { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const { id: idParam } = await params;
-        const id = parseInt(idParam);
-        
-        if (isNaN(id)) {
-            return NextResponse.json(
-                { success: false, error: 'Invalid toolkit ID' },
-                { status: 400 }
-            );
-        }
+        const { id } = await params;
 
         const dataSource = await initializeDataSource();
         const toolkitRepository = dataSource.getRepository(Toolkit);
@@ -58,15 +50,7 @@ export async function PUT(
     { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const { id: idParam } = await params;
-        const id = parseInt(idParam);
-        
-        if (isNaN(id)) {
-            return NextResponse.json(
-                { success: false, error: 'Invalid toolkit ID' },
-                { status: 400 }
-            );
-        }
+        const { id } = await params;
 
         const { name, description, code } = await request.json();
 
@@ -114,15 +98,7 @@ export async function PATCH(
     { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const { id: idParam } = await params;
-        const id = parseInt(idParam);
-        
-        if (isNaN(id)) {
-            return NextResponse.json(
-                { success: false, error: 'Invalid toolkit ID' },
-                { status: 400 }
-            );
-        }
+        const { id } = await params;
 
         const { isPublic } = await request.json();
 
@@ -166,15 +142,7 @@ export async function DELETE(
     { params }: { params: Promise<{ id: string }> }
 ) {
     try {
-        const { id: idParam } = await params;
-        const id = parseInt(idParam);
-        
-        if (isNaN(id)) {
-            return NextResponse.json(
-                { success: false, error: 'Invalid toolkit ID' },
-                { status: 400 }
-            );
-        }
+        const { id } = await params;
 
         const dataSource = await initializeDataSource();
         const toolkitRepository = dataSource.getRepository(Toolkit);

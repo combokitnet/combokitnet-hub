@@ -5,7 +5,7 @@ import Link from "next/link";
 import CodeEditor from "@/components/Editor/CodeEditor";
 
 interface Toolkit {
-    id: number;
+    id: string;
     name: string;
     description: string;
     prompt: string;

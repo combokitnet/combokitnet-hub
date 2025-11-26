@@ -1,7 +1,7 @@
 "use client";
 
 interface Toolkit {
-    id: number;
+    id: string;
     name: string;
     code?: string;
 }

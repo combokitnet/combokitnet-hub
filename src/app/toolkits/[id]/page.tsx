@@ -9,7 +9,7 @@ import ViewMode from "@/components/ToolkitDetail/ViewMode";
 import EditMode from "@/components/ToolkitDetail/EditMode";
 
 interface Toolkit {
-    id: number;
+    id: string;
     name: string;
     description: string;
     prompt: string;

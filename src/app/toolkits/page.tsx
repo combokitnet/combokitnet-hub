@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 interface Toolkit {
-    id: number;
+    id: string;
     name: string;
     description: string;
     prompt: string;

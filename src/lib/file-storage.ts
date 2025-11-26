@@ -10,8 +10,8 @@ export class FileStorageService {
      * @param code - HTML code to save
      * @returns File path relative to public directory
      */
-    async saveToolkit(toolkitId: number, code: string): Promise<string> {
-        const toolkitDir = path.join(this.baseDir, toolkitId.toString());
+    async saveToolkit(toolkitId: string, code: string): Promise<string> {
+        const toolkitDir = path.join(this.baseDir, toolkitId);
         const filePath = path.join(toolkitDir, 'index.html');
 
         // Create directory if not exists
@@ -29,8 +29,8 @@ export class FileStorageService {
      * @param toolkitId - Unique toolkit ID
      * @returns HTML code
      */
-    async readToolkit(toolkitId: number): Promise<string> {
-        const filePath = path.join(this.baseDir, toolkitId.toString(), 'index.html');
+    async readToolkit(toolkitId: string): Promise<string> {
+        const filePath = path.join(this.baseDir, toolkitId, 'index.html');
         
         try {
             const code = await fs.readFile(filePath, 'utf-8');
@@ -45,8 +45,8 @@ export class FileStorageService {
      * @param toolkitId - Unique toolkit ID
      * @param code - New HTML code
      */
-    async updateToolkit(toolkitId: number, code: string): Promise<void> {
-        const filePath = path.join(this.baseDir, toolkitId.toString(), 'index.html');
+    async updateToolkit(toolkitId: string, code: string): Promise<void> {
+        const filePath = path.join(this.baseDir, toolkitId, 'index.html');
         await fs.writeFile(filePath, code, 'utf-8');
     }
 
@@ -54,8 +54,8 @@ export class FileStorageService {
      * Delete toolkit files
      * @param toolkitId - Unique toolkit ID
      */
-    async deleteToolkit(toolkitId: number): Promise<void> {
-        const toolkitDir = path.join(this.baseDir, toolkitId.toString());
+    async deleteToolkit(toolkitId: string): Promise<void> {
+        const toolkitDir = path.join(this.baseDir, toolkitId);
         
         try {
             await fs.rm(toolkitDir, { recursive: true, force: true });
@@ -68,8 +68,8 @@ export class FileStorageService {
      * Check if toolkit file exists
      * @param toolkitId - Unique toolkit ID
      */
-    async exists(toolkitId: number): Promise<boolean> {
-        const filePath = path.join(this.baseDir, toolkitId.toString(), 'index.html');
+    async exists(toolkitId: string): Promise<boolean> {
+        const filePath = path.join(this.baseDir, toolkitId, 'index.html');
         
         try {
             await fs.access(filePath);
