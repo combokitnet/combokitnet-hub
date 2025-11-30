@@ -281,11 +281,11 @@ export default function CreatePage() {
     };
 
     return (
-        <div className="h-screen flex flex-col bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white font-sans overflow-hidden">
+        <div className="h-screen flex flex-col bg-gradient-to-br from-blue-50 via-white to-purple-50 text-gray-900 font-sans overflow-hidden">
             {/* Header */}
-            <header className="relative px-6 py-4 border-b border-slate-800/50 bg-slate-900/80 backdrop-blur-xl flex items-center justify-between shadow-lg">
-                <Link href="/" className="flex items-center gap-2 text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent no-underline hover:opacity-80 transition-opacity">
-                    <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <header className="relative px-6 py-4 border-b border-gray-200 bg-white/80 backdrop-blur-xl flex items-center justify-between shadow-lg">
+                <Link href="/" className="flex items-center gap-2 text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent no-underline hover:opacity-80 transition-opacity">
+                    <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                     ComboKit.Net
@@ -355,17 +355,17 @@ export default function CreatePage() {
 
             <main className="flex-1 flex overflow-hidden">
                 {/* Left Pane: Chat or Code Editor */}
-                <div className="flex-1 flex flex-col overflow-hidden border-r border-slate-800/50">
-                    <div className="px-5 py-3.5 bg-slate-900/50 backdrop-blur-sm border-b border-slate-800/50 text-sm font-semibold text-slate-300 flex justify-between items-center">
+                <div className="flex-1 flex flex-col overflow-hidden border-r border-gray-200">
+                    <div className="px-5 py-3.5 bg-gray-50/50 backdrop-blur-sm border-b border-gray-200 text-sm font-semibold text-gray-700 flex justify-between items-center">
                         <div className="flex items-center gap-4">
                             {/* Mode Toggle */}
-                            <div className="flex items-center gap-2 bg-slate-800/50 rounded-lg p-1">
+                            <div className="flex items-center gap-2 bg-gray-200 rounded-lg p-1">
                                 <button
                                     onClick={() => setMode('chat')}
                                     className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
                                         mode === 'chat' 
                                             ? 'bg-blue-500 text-white' 
-                                            : 'text-slate-400 hover:text-white'
+                                            : 'text-gray-500 hover:text-gray-800'
                                     }`}
                                 >
                                     <span className="flex items-center gap-1.5">
@@ -380,7 +380,7 @@ export default function CreatePage() {
                                     className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
                                         mode === 'code' 
                                             ? 'bg-purple-500 text-white' 
-                                            : 'text-slate-400 hover:text-white'
+                                            : 'text-gray-500 hover:text-gray-800'
                                     }`}
                                 >
                                     <span className="flex items-center gap-1.5">
@@ -393,7 +393,7 @@ export default function CreatePage() {
                             </div>
                         </div>
                         {generatedName && (
-                            <span className="text-xs text-slate-500 font-normal px-3 py-1 rounded-full bg-slate-800/50">
+                            <span className="text-xs text-gray-500 font-normal px-3 py-1 rounded-full bg-gray-100">
                                 {generatedName}
                             </span>
                         )}
@@ -401,16 +401,16 @@ export default function CreatePage() {
 
                     {mode === 'chat' ? (
                         /* Chat Mode */
-                        <div className="flex-1 flex flex-col overflow-hidden bg-slate-900/30">
+                        <div className="flex-1 flex flex-col overflow-hidden bg-gray-50/30">
                             {/* Chat Messages */}
                             <div className="flex-1 overflow-y-auto p-4 space-y-4">
                                 {chatMessages.length === 0 && !code ? (
-                                    <div className="flex flex-col items-center justify-center h-full text-slate-500">
-                                        <svg className="w-16 h-16 mb-4 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <div className="flex flex-col items-center justify-center h-full text-gray-500">
+                                        <svg className="w-16 h-16 mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                                         </svg>
                                         <p className="text-sm mb-2">Start by describing your toolkit</p>
-                                        <p className="text-xs text-slate-600">e.g., "Create a password generator"</p>
+                                        <p className="text-xs text-gray-400">e.g., "Create a password generator"</p>
                                     </div>
                                 ) : (
                                     chatMessages.map((msg, idx) => (
@@ -418,7 +418,7 @@ export default function CreatePage() {
                                             <div className={`max-w-[80%] px-4 py-2 rounded-lg ${
                                                 msg.role === 'user' 
                                                     ? 'bg-blue-600 text-white' 
-                                                    : 'bg-slate-800 text-slate-200'
+                                                    : 'bg-white border border-gray-200 text-gray-800'
                                             }`}>
                                                 <p className="text-sm">{msg.content}</p>
                                             </div>
@@ -427,7 +427,7 @@ export default function CreatePage() {
                                 )}
                                 {chatLoading && (
                                     <div className="flex justify-start">
-                                        <div className="bg-slate-800 text-slate-200 px-4 py-2 rounded-lg">
+                                        <div className="bg-white border border-gray-200 text-gray-800 px-4 py-2 rounded-lg">
                                             <div className="flex items-center gap-2">
                                                 <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
                                                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -441,10 +441,10 @@ export default function CreatePage() {
                             </div>
 
                             {/* Chat Input - Always visible in chat mode */}
-                            <div className="p-4 border-t border-slate-800/50 bg-slate-900/50">
+                            <div className="p-4 border-t border-gray-200 bg-white/50">
                                 <div className="flex gap-2 items-end">
                                     <textarea
-                                        className="flex-1 px-4 py-3 rounded-lg border border-slate-700/50 bg-slate-800/50 text-white text-sm outline-none transition-all duration-200 focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20 placeholder:text-slate-500 resize-none min-h-[48px] max-h-[200px]"
+                                        className="flex-1 px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 text-sm outline-none transition-all duration-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 placeholder:text-gray-400 resize-none min-h-[48px] max-h-[200px]"
                                         placeholder={code ? "Ask to modify the code (e.g., 'Add a dark mode toggle')" : "Describe your toolkit (e.g., 'Password Generator')"}
                                         value={code ? chatInput : prompt}
                                         onChange={(e) => {
@@ -497,7 +497,7 @@ export default function CreatePage() {
                         </div>
                     ) : (
                         /* Code Edit Mode */
-                        <div className="flex-1 overflow-hidden relative bg-[#1e1e1e]">
+                        <div className="flex-1 overflow-hidden relative bg-white">
                             {code ? (
                                 <CodeEditor
                                     value={code}
@@ -506,12 +506,12 @@ export default function CreatePage() {
                                     height="100%"
                                 />
                             ) : (
-                                <div className="flex flex-col items-center justify-center h-full text-slate-500">
-                                    <svg className="w-16 h-16 mb-4 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <div className="flex flex-col items-center justify-center h-full text-gray-500">
+                                    <svg className="w-16 h-16 mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                                     </svg>
                                     <p className="text-sm">Your generated code will appear here</p>
-                                    <p className="text-xs text-slate-600 mt-2">Switch to Chat mode to generate</p>
+                                    <p className="text-xs text-gray-400 mt-2">Switch to Chat mode to generate</p>
                                 </div>
                             )}
                         </div>
@@ -520,8 +520,8 @@ export default function CreatePage() {
 
                 {/* Right Pane: Live Preview */}
                 <div className="flex-1 flex flex-col overflow-hidden">
-                    <div className="px-5 py-3.5 bg-slate-900/50 backdrop-blur-sm border-b border-slate-800/50 text-sm font-semibold text-slate-300 flex items-center gap-2">
-                        <svg className="w-4 h-4 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="px-5 py-3.5 bg-gray-50/50 backdrop-blur-sm border-b border-gray-200 text-sm font-semibold text-gray-700 flex items-center gap-2">
+                        <svg className="w-4 h-4 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                         </svg>
@@ -536,13 +536,13 @@ export default function CreatePage() {
                                 sandbox="allow-scripts"
                             />
                         ) : (
-                            <div className="flex flex-col items-center justify-center h-full text-slate-400 bg-slate-50">
-                                <svg className="w-16 h-16 mb-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div className="flex flex-col items-center justify-center h-full text-gray-500 bg-gray-50">
+                                <svg className="w-16 h-16 mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                                 </svg>
                                 <p className="text-sm">Live preview will appear here</p>
-                                <p className="text-xs text-slate-400 mt-2">Generate a toolkit to see the preview</p>
+                                <p className="text-xs text-gray-400 mt-2">Generate a toolkit to see the preview</p>
                             </div>
                         )}
                     </div>

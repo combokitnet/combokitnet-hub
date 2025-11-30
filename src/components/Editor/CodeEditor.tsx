@@ -18,15 +18,16 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
 }) => {
     const handleEditorDidMount: OnMount = (editor, monaco) => {
         // Optional: Configure editor settings here
-        monaco.editor.defineTheme("custom-dark", {
-            base: "vs-dark",
+        monaco.editor.defineTheme("custom-light", {
+            base: "vs",
             inherit: true,
             rules: [],
             colors: {
-                "editor.background": "#1e1e1e",
+                "editor.background": "#ffffff",
+                "editor.foreground": "#374151",
             },
         });
-        monaco.editor.setTheme("custom-dark");
+        monaco.editor.setTheme("custom-light");
     };
 
     return (
@@ -36,7 +37,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
             language={language}
             value={value}
             onChange={onChange}
-            theme="vs-dark"
+            theme="vs"
             onMount={handleEditorDidMount}
             options={{
                 minimap: { enabled: false },

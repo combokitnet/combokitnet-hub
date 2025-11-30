@@ -34,12 +34,12 @@ export default function ToolkitsPage() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 text-gray-900">
             {/* Header */}
-            <header className="border-b border-slate-800/50 bg-slate-900/80 backdrop-blur-xl">
+            <header className="border-b border-gray-200 bg-white/80 backdrop-blur-xl">
                 <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-                    <Link href="/" className="flex items-center gap-2 text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent no-underline hover:opacity-80 transition-opacity">
-                        <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <Link href="/" className="flex items-center gap-2 text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent no-underline hover:opacity-80 transition-opacity">
+                        <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
                         ComboKit.Net
@@ -57,10 +57,10 @@ export default function ToolkitsPage() {
             {/* Main Content */}
             <main className="max-w-7xl mx-auto px-6 py-12">
                 <div className="mb-8">
-                    <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                    <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                         My Toolkits
                     </h1>
-                    <p className="text-slate-400">
+                    <p className="text-gray-600">
                         {toolkits.length} toolkit{toolkits.length !== 1 ? 's' : ''} saved
                     </p>
                 </div>
@@ -73,12 +73,12 @@ export default function ToolkitsPage() {
                         </svg>
                     </div>
                 ) : toolkits.length === 0 ? (
-                    <div className="flex flex-col items-center justify-center py-20 text-slate-500">
-                        <svg className="w-20 h-20 mb-4 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="flex flex-col items-center justify-center py-20 text-gray-500">
+                        <svg className="w-20 h-20 mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
                         </svg>
                         <p className="text-lg mb-2">No toolkits yet</p>
-                        <p className="text-sm text-slate-600 mb-6">Create your first toolkit to get started</p>
+                        <p className="text-sm text-gray-400 mb-6">Create your first toolkit to get started</p>
                         <Link 
                             href="/create"
                             className="px-6 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-violet-600 text-white font-semibold hover:opacity-90 transition-opacity"
@@ -92,7 +92,7 @@ export default function ToolkitsPage() {
                             <Link
                                 key={toolkit.id}
                                 href={`/toolkits/${toolkit.id}`}
-                                className="group block bg-gradient-to-br from-slate-800/50 to-slate-900/50 p-6 rounded-2xl border border-slate-700/50 backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:border-blue-500/50 hover:shadow-xl hover:shadow-blue-500/10 no-underline"
+                                className="group block bg-gradient-to-br from-white/80 to-gray-50/80 p-6 rounded-2xl border border-gray-200 backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:border-blue-300 hover:shadow-xl hover:shadow-blue-500/20 no-underline"
                             >
                                 <div className="flex items-start justify-between mb-4">
                                     <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center">
@@ -100,27 +100,27 @@ export default function ToolkitsPage() {
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                                         </svg>
                                     </div>
-                                    <span className="text-xs text-slate-500">
+                                    <span className="text-xs text-gray-500">
                                         #{toolkit.id}
                                     </span>
                                 </div>
                                 
-                                <h3 className="text-xl font-bold mb-2 text-white group-hover:text-blue-400 transition-colors">
+                                <h3 className="text-xl font-bold mb-2 text-gray-900 group-hover:text-blue-600 transition-colors">
                                     {toolkit.name}
                                 </h3>
                                 
-                                <p className="text-sm text-slate-400 mb-4 line-clamp-2">
+                                <p className="text-sm text-gray-600 mb-4 line-clamp-2">
                                     {toolkit.description}
                                 </p>
                                 
-                                <div className="flex items-center justify-between text-xs text-slate-500">
+                                <div className="flex items-center justify-between text-xs text-gray-500">
                                     <span className="flex items-center gap-1">
                                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                         </svg>
                                         {new Date(toolkit.createdAt).toLocaleDateString()}
                                     </span>
-                                    <span className="text-blue-400 group-hover:translate-x-1 transition-transform">
+                                    <span className="text-blue-600 group-hover:translate-x-1 transition-transform">
                                         View →
                                     </span>
                                 </div>
